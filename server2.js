@@ -6,6 +6,7 @@ const port = 3000
 
 // case :1 
 
+//Here only the first get will work and the Simple Output 1 is the console output and remaining gets will not work
 // app.get("/simple",function(req,res){
 //     res.send("Simple output 1")
 // })
@@ -21,6 +22,8 @@ const port = 3000
 //----------------------------------------------------------------------------------------//
 
 //case 2
+
+//Here only use will work
 
 // app.use(function(req,res){
 //     res.send("Use will always run");
