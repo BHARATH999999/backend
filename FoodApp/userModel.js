@@ -14,19 +14,28 @@ console.log("connected");
 let userSchema = new mongoose.Schema({
     name : {
         type : String,
-        required : true
+        required : [true, "Name is missing"]
     },
     password : {
         type : String,
-        required : true
+        required : [true, "Password is missing"]
     },
     confirmPassword : {
         type : String,
-        required : true
+        required : [true, "Confirm Password is missing"],
+        //custom validator
+
+        validate : {
+            validator : function(){
+                return this.password == this.confirmPassword;
+            },
+            //error message 
+            message : "Password mis-match"
+        } 
     },
     email : {
         type : String,
-        required : true,
+        required : [true, "Email is missing"],
         unique : true
     },
     phoneNumber : {
