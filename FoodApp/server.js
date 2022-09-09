@@ -1,6 +1,10 @@
 const express = require("express")
 //npm i cookie-parser
 const cookieParser = require("cookie-parser")
+
+//npm i jsonwebtoken
+const jwt = require("jsonwebtoken")
+const secretKey = "svdknZnvdvn32t&CC"
 const app = express();
 const port = 3000;
 app.use(express.json())
@@ -28,7 +32,9 @@ app.post("/login",async function(req,res){
             let user = await userModel.findOne({email : email});
             if(user){
                 if(user.password == password){
-                    res.cookie("token","sample value");
+                    const token = jwt.sign({data : user['_id']}, secretKey);
+                    // console.log(token);
+                    res.cookie("JWT",token);
                     res.send("User Logged in");
                 }
                 else{
