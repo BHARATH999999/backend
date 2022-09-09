@@ -17,6 +17,34 @@ app.post('/signup',async function (req,res) {
     }
 })
 
+app.post("/login",async function(req,res){
+    try{
+        let data = req.body;
+        // console.log(data);
+        let {email,password} = data;
+        if(email && password){
+            let user = await userModel.findOne({email : email});
+            if(user){
+                if(user.password == password){
+                    res.send("User Logged in")
+                }
+                else{
+                    res.send("Email or Password does not match")
+                }
+            }
+            else{
+                res.send("User with this email doesn't exists. Kindly Sign up")
+            }
+        }
+        else{
+            res.send("Kindly enter both Email and Password")
+        }
+    }catch(err){
+        console.log(err.message);
+        res.send(err.message);
+    }
+})
+
 app.listen(port,function(){
     console.log(`server started at port ${port}`)
 })
