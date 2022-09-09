@@ -59,6 +59,47 @@ app.post("/login",async function(req,res){
     }
 })
 
+app.patch("/forgetPassword",async function(req,res){
+    try{
+        let {email} = req.body;
+        let otp = otpGenerator();
+        // res.json({
+        //     otp : otp
+        // })
+
+        let user = await userModel.findOneAndUpdate({email : email},{otp : otp},{new : true})
+        console.log(user);
+        res.json({
+            data : user,
+            message : "Otp sent to your mail"
+        })
+    }
+    catch(err){
+        res.send(err.message);
+    }
+})
+
+app.patch("/resetPassword", async function(req,res){
+    try{
+        let {otp, password, confirmPassword} = req.body;
+        let user = await userModel.findOneAndUpdate({otp},{password, confirmPassword, otp : undefined}, {
+            runValidators : true, new : true
+        });
+        console.log(user);
+        res.json({
+            data : user,
+            message : "Password for the user is reset"
+        })
+    }
+    catch(err){
+        res.send(err.message);
+    }
+})
+
+function otpGenerator(){
+    return Math.floor(Math.random()*1000000);
+}
+
 app.get("/users", protectedRoute, async function(req,res){
     // console.log(req.cookies);
     try{
@@ -105,6 +146,7 @@ function protectedRoute(req,res,next){
         res.send(err.message);
     }
 }
+
 app.listen(port,function(){
     console.log(`server started at port ${port}`)
 })
