@@ -70,6 +70,21 @@ app.get("/users", protectedRoute, async function(req,res){
     }
 })
 
+app.get("/user", protectedRoute, async function(req,res){
+    // console.log(req.cookies);
+    try{
+        const userId = req.userId;
+        const user = await userModel.findById(userId);
+        res.json({
+            data : user,
+            message : "Data about logged in user is send"
+        });
+    }
+    catch(err){
+        res.send(err.message);
+    }
+})
+
 function protectedRoute(req,res,next){
     try{
         let cookies = req.cookies;
@@ -77,6 +92,8 @@ function protectedRoute(req,res,next){
         if(JWT){
             const token = jwt.verify(JWT,secretKey);
             console.log(token);
+            let userId = token.data;
+            req.userId = userId;
             next();
         }
         else{
