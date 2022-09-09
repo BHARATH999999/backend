@@ -5,8 +5,12 @@ const cookieParser = require("cookie-parser")
 //npm i jsonwebtoken
 const jwt = require("jsonwebtoken")
 const secretKey = "svdknZnvdvn32t&CC"
+
 const app = express();
+app.use(cookieParser());
 const port = 3000;
+
+
 app.use(express.json())
 const userModel = require("./userModel");
 
@@ -32,8 +36,9 @@ app.post("/login",async function(req,res){
             let user = await userModel.findOne({email : email});
             if(user){
                 if(user.password == password){
+                    // console.log(user['_id']);
                     const token = jwt.sign({data : user['_id']}, secretKey);
-                    // console.log(token);
+                    console.log(token);
                     res.cookie("JWT",token);
                     res.send("User Logged in");
                 }
@@ -54,10 +59,35 @@ app.post("/login",async function(req,res){
     }
 })
 
-app.get("/users",function(req,res){
-    console.log(req.cookies);
-    // res.send(req.cookies);
+app.get("/users", protectedRoute, async function(req,res){
+    // console.log(req.cookies);
+    try{
+        let users = await userModel.find();
+        res.json(users);
+    }
+    catch(err){
+        res.send(err.message);
+    }
 })
+
+function protectedRoute(req,res,next){
+    try{
+        let cookies = req.cookies;
+        let JWT = cookies.JWT;  
+        if(JWT){
+            const token = jwt.verify(JWT,secretKey);
+            console.log(token);
+            next();
+        }
+        else{
+            res.send("You are not logged in. Kindly login")
+        }
+    }
+    catch(err){
+        console.log(err);
+        res.send(err.message);
+    }
+}
 app.listen(port,function(){
     console.log(`server started at port ${port}`)
 })
