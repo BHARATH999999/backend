@@ -1,4 +1,6 @@
 const express = require("express")
+//npm i cookie-parser
+const cookieParser = require("cookie-parser")
 const app = express();
 const port = 3000;
 app.use(express.json())
@@ -26,7 +28,8 @@ app.post("/login",async function(req,res){
             let user = await userModel.findOne({email : email});
             if(user){
                 if(user.password == password){
-                    res.send("User Logged in")
+                    res.cookie("token","sample value");
+                    res.send("User Logged in");
                 }
                 else{
                     res.send("Email or Password does not match")
@@ -45,6 +48,10 @@ app.post("/login",async function(req,res){
     }
 })
 
+app.get("/users",function(req,res){
+    console.log(req.cookies);
+    // res.send(req.cookies);
+})
 app.listen(port,function(){
     console.log(`server started at port ${port}`)
 })
