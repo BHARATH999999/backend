@@ -62,17 +62,19 @@ app.post("/login",async function(req,res){
 app.patch("/forgetPassword",async function(req,res){
     try{
         let {email} = req.body;
+        let afterFiveMin = Date.now() + 1000*60*5;
         let otp = otpGenerator();
         // res.json({
         //     otp : otp
         // })
 
-        let user = await userModel.findOneAndUpdate({email : email},{otp : otp},{new : true})
+        let user = await userModel.findOneAndUpdate({email : email},{otp : otp, otpExpiry : afterFiveMin},{new : true})
         console.log(user);
         res.json({
             data : user,
             message : "Otp sent to your mail"
         })
+        
     }
     catch(err){
         res.send(err.message);
@@ -81,10 +83,34 @@ app.patch("/forgetPassword",async function(req,res){
 
 app.patch("/resetPassword", async function(req,res){
     try{
-        let {otp, password, confirmPassword} = req.body;
-        let user = await userModel.findOneAndUpdate({otp},{password, confirmPassword, otp : undefined}, {
-            runValidators : true, new : true
-        });
+        let {otp, password, confirmPassword, email} = req.body;
+        let user = await userModel.findOne({email});
+        let currentTime = Date.now();
+
+        if(currentTime > user.otpExpiry){
+            delete user.otp;
+            delete user.otpExpiry;
+            res.json({
+                message : "OTP expired"
+            })
+        }
+        else{
+            if(user.otp != otp){
+                res.json({
+                    message : "Invalid OTP"
+                })
+            }
+            else{
+                user = await userModel.findOneAndUpdate({otp},{password,confirmPassword},{runValidators : true, new : true})
+                delete user.otp;
+                delete user.otpExpiry;
+                await user.save();
+                res.json({
+                    user : user,
+                    message : "reset password successful"
+                })
+            }
+        }
         console.log(user);
         res.json({
             data : user,
