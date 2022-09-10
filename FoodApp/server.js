@@ -105,6 +105,7 @@ app.patch("/resetPassword", async function(req,res){
                 delete user.otp;
                 delete user.otpExpiry;
                 await user.save();
+                // user = await userModel.findOne({email});
                 res.json({
                     user : user,
                     message : "reset password successful"
