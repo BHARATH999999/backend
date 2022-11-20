@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken")
 const secretKey = "secularKey"
 const userModel = require("../model/userModel");
-
+const mailSender = require("../utilities/mailSender")
 
 async function signupController(req,res){
     try{
