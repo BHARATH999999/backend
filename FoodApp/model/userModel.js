@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const pass = require("../secrets")
+const {pass} = require("./raw/secrets")
 
 let dbLink = `mongodb://dbUser:${pass}@ac-ydvi2re-shard-00-00.tgijfc6.mongodb.net:27017,ac-ydvi2re-shard-00-01.tgijfc6.mongodb.net:27017,ac-ydvi2re-shard-00-02.tgijfc6.mongodb.net:27017/?ssl=true&replicaSet=atlas-ubnxi8-shard-0&authSource=admin&retryWrites=true&w=majority`
 
