@@ -13,6 +13,8 @@ function AuthProvider({ children }) {
     // const history = useHistory();
     const [user, userSet] = useState("");
     const [loading, setLoading] = useState(false);
+    const [resetPassEmail, setResetEmail] = useState(null);
+    const [otpPassEmail, setOtpPassEmail] = useState(null);
     async function signUp(name, password, email, confirm) {
         try {
             console.log("signup will be here");
@@ -30,18 +32,21 @@ function AuthProvider({ children }) {
         }
     }
     async function login(email, password) {
+        let flag = true;
         try {
             setLoading(true);
             const res = await axios.post("/api/v1/auth/login", {
                 email: email,
                 password: password
             });
-            setLoading(false);
-            // console.log("40",res.data);
             userSet(res.data.user);
+            setLoading(false);
+            // console.log("40",res.data.user);
+            return flag;
         }
         catch (err) {
             console.log(err);
+            alert(err.message);
             setLoading(false);
         }
         console.log("login will be here");
@@ -56,7 +61,11 @@ function AuthProvider({ children }) {
         user,
         login,
         signUp,
-        logout
+        logout,
+        resetPassEmail,
+        setResetEmail,
+        otpPassEmail,
+        setOtpPassEmail
     }
     return (
         < AuthContext.Provider value={value} >
