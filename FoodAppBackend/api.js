@@ -4,7 +4,7 @@ const app = express();
 
 //npm i cookie-parser
 const cookieParser = require("cookie-parser");
-// app.use(express.static('public'))
+app.use(express.static('public/build'))
 
 const userRouter = require("./routes/userRoutes");
 const authRouter = require("./routes/authRoutes");
