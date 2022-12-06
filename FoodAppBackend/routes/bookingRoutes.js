@@ -6,7 +6,7 @@ const {createSession} = require("../controller/bookingController")
 bookingRouter.post('/createSession',createSession);
 
 bookingRouter.get('/createSession',function(req,res){
-    res.sendFile("../booking.html")
+    res.sendFile("D:\\CODE\\backend\\FoodAppBackend\\booking.html")
 })
 
 module.exports = bookingRouter;
