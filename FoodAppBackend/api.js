@@ -17,8 +17,8 @@ app.use(cookieParser());
 app.use("/api/v1/auth",authRouter);
 app.use("/api/v1/user",userRouter);
 app.use("/api/v1/plan",planRouter);
-app.use("/api/v1/review",reviewRouter)
-app.use('/booking',bookingRouter);
+app.use("/api/v1/review",reviewRouter);
+app.use('/api/v1/createSession',bookingRouter);
 
 app.listen(3000,function(){
     console.log("server started at 3000");

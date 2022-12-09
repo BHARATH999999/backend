@@ -23,7 +23,7 @@ function Review() {
                     <div className="line"></div>
                 </div>
                 <div className="rDetail">
-                    {
+                    {   // ?. -> Optional Chaining
                         arr && arr?.map((ele, key) =>
                             <div className="rCard" key={key}>
                                 <div className='rimage'>

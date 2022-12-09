@@ -10,7 +10,7 @@ function Login() {
     const history = useHistory();
     const [password, passwordSet] = useState("")
     const [email, emailSet] = useState("");
-    const [loading, setLoading] = useState(false);
+    // const [loading, setLoading] = useState(false);
     const {login, user} = useContext(AuthContext);
 
 
@@ -21,6 +21,9 @@ function Login() {
             let flag = await login(email, password)
             if(flag){
                 history.push("/")
+            }
+            else{
+                history.push("/login")
             }
           } catch(err) {
             console.log(err);

@@ -32,7 +32,7 @@ function NavBar() {
                                 <Link to="/profilePage">{user?.name}</Link>
                             </li>
                             <li>
-                                <Link to="" onClick={logout}>Logout</Link>
+                                <Link to="/" onClick={logout}>Logout</Link>
                             </li>
                         </>
                         :

@@ -28,13 +28,14 @@ function PlanDetail() {
     }
     console.log(rate);
     const handleClick = async () => {
-        console.log(123645);
+        // console.log(123645);
         const data = await axios.post("/api/reviews", {
             "review": review,
             "rating": rate,
             "user": user._id,
             "plan": id
         })
+        console.log(data.data);
         const reviews = await axios.get("/api/v1/review" + id);
         setarr(reviews.data.reviews);
     }

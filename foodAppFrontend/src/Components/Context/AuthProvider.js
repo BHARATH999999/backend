@@ -41,7 +41,7 @@ function AuthProvider({ children }) {
             });
             userSet(res.data.user);
             setLoading(false);
-            // console.log("40",res.data.user);
+            console.log("40",res.data.user);
             return flag;
         }
         catch (err) {
@@ -52,8 +52,8 @@ function AuthProvider({ children }) {
         console.log("login will be here");
     }
     function logout() {
-        // localStorage.removeItem("user")
-        // userSet(null);
+        localStorage.removeItem("user")
+        userSet(null);
         console.log("logout will come here");
     }
 

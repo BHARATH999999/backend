@@ -3,12 +3,18 @@ import Date from "../Images/date.png";
 import Carrot from "../Images/carrot.png";
 import Fast from "../Images/fast.png";
 import Capture from "../Images/Capture.png";
-import Review from './Review';
+// import Review from './Review';
 import Plans from './Plans';
 import Contact from './Contact';
 import '../Styles/home.css'
+// import { Link } from "react-router-dom";
+// import { useHistory } from 'react-router-dom';
 
 function Home() {
+    // let history = useHistory ();
+    const handleClick = () => {
+    //    history.push ('/api/v1/createSession');
+    }
 
     return (
         <>
@@ -26,7 +32,7 @@ function Home() {
                         </div>
                         
                         <div className="btnBox">
-                            <button className="bookNowBtn btn"> Book Now</button>
+                            <button className="bookNowBtn btn" onClick={handleClick}> Book Now </button>
                             <button className="showMoreBtn btn">Show Me More</button>
                         </div>
                     </div>
@@ -114,7 +120,7 @@ function Home() {
                     </div>
                 </div>
             </div>
-            <Review />
+            {/* <Review /> */}
             <Plans />
             <Contact />
         </>

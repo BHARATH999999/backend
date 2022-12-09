@@ -7,15 +7,15 @@ import { Link } from 'react-router-dom';
 function Plans() {
     const [arr, arrset] = useState([]);
 
-    useEffect(async () => {
-        try {
-            const data = await axios.get("/api/gettop3");
-            arrset(data.data.data);
-            console.log(data.data);
-        } catch (err) {
-            console.log(err);
-        }
-    }, [])
+    // useEffect(async () => {
+    //     try {
+    //         const data = await axios.get("/api/gettop3");
+    //         arrset(data.data.data);
+    //         console.log(data.data);
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // }, [])
 
     return (
         <div className='plansCard'>

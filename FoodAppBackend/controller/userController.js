@@ -26,8 +26,21 @@ async function getAllUsersController(req,res){
     // res.send("cookie read");
 }
 
+async function getUserController(req,res){
+    try{
+        // console.log(req.);
+        const user = await userModel.findByIdAndUpdate(req.body._id,req.body);
+        console.log(user);
+        res.json(user);
+    }
+    catch(err){
+        res.send(err.message);
+    }
+}
+
 
 module.exports = {
     profileController:profileController,
-    getAllUsersController:getAllUsersController
+    getAllUsersController:getAllUsersController,
+    getUserController : getUserController
 }

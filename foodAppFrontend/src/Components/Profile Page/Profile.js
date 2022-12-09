@@ -9,26 +9,28 @@ function Profile() {
     const [passwordCnf, passwordCnfSet] = useState(user.password)
     const [email, emailSet] = useState(user.email);
     const [name, nameSet] = useState(user.name);
-    const nameEdit = async () => {
-        await axios.patch('/api/users/login');
-    }
+    // const nameEdit = async () => {
+    //     await axios.patch('/api/users/login');
+    // }
+
     const handleClick = async () => {
         try {
-            console.log(user.user._id);
-            const data = await axios.patch("/api/v1/user/profile" + user.user._id,
-             { headers: { "Authorization": `Bearer ${user.token}` } }, {
+            const data = await axios.patch("/api/v1/user",
+             {  
+                _id:user?._id,
                 email,
                 name,
                 password,
                 confirmPassword: passwordCnf,
-                role: user.user.role,
-                _id:user.user._id
+                // pic : "undefined"
+                // role: user.user.role,
             });
+            console.log(data);
         } catch (error) {
             console.log(error);
         }
     }
-    console.log(user);
+    // console.log(user);
     return (
         <div className="container-grey">
 
