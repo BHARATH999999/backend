@@ -61,11 +61,11 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Shreya-0999/Food_App.git"
+    "url": ""
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Shreya-0999/Food_App/issues"
+    "url": ""
   }
 }
