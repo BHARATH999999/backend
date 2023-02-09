@@ -50,10 +50,20 @@
         <a align = "center" target="_blank" href ="https://www.geeksforgeeks.org/mvc-framework-introduction/" rel="noreferrer">
         <img src = "https://media.geeksforgeeks.org/wp-content/uploads/20220224160807/Model1.png" alt = "MVC" align = "center" width="72%" height="72%"/>
         </a>
+        <h2 align="left">Restful Api: </h2>  
+        <a align = "center" target="_blank" href ="https://restfulapi.net/" rel="noreferrer">
+        <img src = "https://mycodetips.com/wp-content/uploads/2019/12/Rest-API.png" alt = "Restful Api" align = "center" width="72%" height="72%"/>
+        </a>     
 </p>
 
 <h2> </h2>
 <p align="left">
-       <h2 align="left">Result: </h2>  
-        <img src = "./output.png" alt = "output" align = "center" width="100%" height="100%"/>
+       <h2 align="left">Result: </h2>
+       <h3>Home Page: </h3>
+        <img src = "./outputs/output1.jpg" alt = "output1" align = "center" width="80%" height="60%"/>
+        <h3> Plans Page: </h3>
+        <img src = "./outputs/output2.jpg" alt = "output2" align = "center" width="80%" height="60%"/>
+        <h3> Profile Page: </h3>
+        <img src = "./outputs/output3.jpg" alt = "output3" align = "center" width="40%" height="40%"/>
+        
 </p>
