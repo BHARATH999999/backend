@@ -11,6 +11,9 @@ function Login() {
     const [password, passwordSet] = useState("")
     const [email, emailSet] = useState("");
     // const [loading, setLoading] = useState(false);
+    const {userSet} = useContext(AuthContext);
+    let user1 = localStorage.getItem("user");
+    if(user1) userSet(user1);
     const {login, user} = useContext(AuthContext);
 
 

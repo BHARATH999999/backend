@@ -13,7 +13,7 @@ const foodPlanModel = require("../model/planModel");
  async function createReviewController(req,res){
     try{
         let reviewData = req.body;
-        let review = await foodReviewModel.create(reviewData);
+        let review = await foodReviewModel.create(reviewData, {new : true});
         let rating = review.rating;
         let reviewId = review["_id"];
         let currentPlan = await foodPlanModel.findById(review.plan);
@@ -32,6 +32,7 @@ const foodPlanModel = require("../model/planModel");
             review,
             result:"created"
         })
+        console.log(review);
     }
     catch(err){
         console.log(err);

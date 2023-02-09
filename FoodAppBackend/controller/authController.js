@@ -33,6 +33,7 @@ async function loginController(req,res){
                     // console.log(token);
                     //put token into cookies
                     res.cookie("JWT",token);
+                    res.cookie("user",user);
                     console.log(user);
                     res.status(200).json({user});
                 }else{
@@ -57,7 +58,8 @@ async function loginController(req,res){
 async function forgetPasswordController(req,res){
     try{
         let {email} = req.body;
-        let user = await userModel.findOne({email});
+        console.log(email);
+        let user = await userModel.findOne({"email" : email});
         if(user){
             let otp = otpGenerator();
             let afterFiveMin = Date.now() + 1000*60*5;

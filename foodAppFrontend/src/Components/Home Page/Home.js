@@ -7,13 +7,12 @@ import Capture from "../Images/Capture.png";
 import Plans from './Plans';
 import Contact from './Contact';
 import '../Styles/home.css'
-// import { Link } from "react-router-dom";
-// import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 function Home() {
-    // let history = useHistory ();
-    const handleClick = () => {
-    //    history.push ('/api/v1/createSession');
+    const handleClick = async () => {
+        const data = await axios.get("/api/v1/booking/createSession");
+        // console.log(data);
     }
 
     return (

@@ -29,7 +29,7 @@ function AllPlans() {
                             <div className='pCard1'>
                                 <div className='priceBox'>
                                     <div className='price'>Rs {ele.price}</div>
-                                    <div className="duration">/month</div>
+                                    <div className="duration">/year</div>
                                 </div>
                                 <p className="point">That’s only {Math.floor(ele.price/ele.duration)} per month</p>
                             </div>

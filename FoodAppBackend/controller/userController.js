@@ -1,4 +1,6 @@
 const userModel = require("../model/userModel")
+const multer  = require('multer')
+const upload = multer({ dest: 'uploads/' })
 
 
 async function profileController(req,res){
@@ -34,6 +36,25 @@ async function getUserController(req,res){
         res.json(user);
     }
     catch(err){
+        res.send(err.message);
+    }
+}
+
+async function profilePicUploader(req,res){
+    try{
+        const userId = req.userId;
+        const user = await userModel.findById(userId);
+        const userPic = req.file.path;
+        console.log(user);
+        console.log(userPic);
+        app.post('/profile/pic/upload', upload.single('avatar'), function (req, res, next) {
+            // req.file is the `avatar` file
+            // req.body will hold the text fields, if there were any
+        })
+        const cpUpload = upload.fields([{ name: 'avatar', maxCount: 1 }, { name: 'gallery', maxCount: 8 }])
+        app.post('/cool-profile', cpUpload, function (req, res, next) {
+        })
+    }catch(err){
         res.send(err.message);
     }
 }

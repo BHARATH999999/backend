@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import '../Styles/login.css'
-import axios from 'axios';
+// import axios from 'axios';
 import { useHistory } from "react-router-dom";
 import { useAuth } from '../Context/AuthProvider';
 function OTP() {
     const [otp, otpSet] = useState("");
-    const history = useHistory();
+    const history = useHistory("/otp");
 
     const { resetPassEmail, setOtpPassEmail } = useAuth();
     const saveOTP = async () => {

@@ -16,15 +16,15 @@ function Profile() {
     const handleClick = async () => {
         try {
             const data = await axios.patch("/api/v1/user",
-             {  
-                _id:user?._id,
-                email,
-                name,
-                password,
-                confirmPassword: passwordCnf,
-                // pic : "undefined"
-                // role: user.user.role,
-            });
+                {
+                    _id: user?._id,
+                    email,
+                    name,
+                    password,
+                    confirmPassword: passwordCnf,
+                    // pic : "undefined"
+                    // role: user.user.role,
+                });
             console.log(data);
         } catch (error) {
             console.log(error);
@@ -44,7 +44,9 @@ function Profile() {
                 </div>
                 <div className="loginBox">
                     <div className="entryBox">
-                        <input type="file" />
+                        <form action="/api/v1/user/profilepic" method="post" enctype="multipart/form-data">
+                            <input type="file" name="avatar" />
+                        </form>
                     </div>
                     <div className="entryBox">
                         <div className="entryText">Email</div>

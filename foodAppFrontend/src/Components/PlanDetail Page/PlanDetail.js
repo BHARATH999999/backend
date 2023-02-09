@@ -18,7 +18,7 @@ function PlanDetail() {
         delete data.data.plan["_id"]
         delete data.data.plan["__v"]
         setplan(data.data.plan)
-        const reviews = await axios.get("/api/v1/review" + id);
+        const reviews = await axios.get("/api/v1/review/" + id);
         setarr(reviews.data.reviews)
         console.log(arr);
     }, [])
@@ -29,14 +29,14 @@ function PlanDetail() {
     console.log(rate);
     const handleClick = async () => {
         // console.log(123645);
-        const data = await axios.post("/api/reviews", {
+        const data = await axios.post("/api/v1/review", {
             "review": review,
             "rating": rate,
             "user": user._id,
             "plan": id
         })
         console.log(data.data);
-        const reviews = await axios.get("/api/v1/review" + id);
+        const reviews = await axios.get("/api/v1/review/" + id);
         setarr(reviews.data.reviews);
     }
     const handleDelete = async() =>{
@@ -75,7 +75,7 @@ function PlanDetail() {
 
             <div className='reviewBox'>
                 <div className="reviewEnrty">
-                    <input type="text" value={review} onChange={(e) => setreview(e.target.value)} />
+                    <input type="text" placeholder='Enter review here and select rating' onChange={(e) => setreview(e.target.value)} />
                     <select name="" id="" className="select" onChange={(e) => { setrate(e.target.value) }}>
                         <option value="5">5 Exellent</option>
                         <option value="4">4 Very Good</option>
