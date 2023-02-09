@@ -52,7 +52,7 @@
         </a>
         <h2 align="left">Restful Api: </h2>  
         <a align = "center" target="_blank" href ="https://restfulapi.net/" rel="noreferrer">
-        <img src = "https://mycodetips.com/wp-content/uploads/2019/12/Rest-API.png" alt = "Restful Api" align = "center" width="72%" height="72%"/>
+        <img src = "https://mycodetips.com/wp-content/uploads/2019/12/Rest-API.png" alt = "Restful Api" align = "center" width="50%" height="50%"/>
         </a>     
 </p>
 
