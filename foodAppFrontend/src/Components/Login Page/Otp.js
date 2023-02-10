@@ -7,15 +7,15 @@ function OTP() {
     const [otp, otpSet] = useState("");
     const history = useHistory("/otp");
 
-    const { resetPassEmail, setOtpPassEmail } = useAuth();
+    const { resetPassEmail, setOtpPassEmailSetter } = useAuth();
     const saveOTP = async () => {
-        setOtpPassEmail(otp);
+        setOtpPassEmailSetter(otp);
         history.push("/passwordReset")
         // send to password and confirm password page 
     }
     return (<>
         {
-            resetPassEmail != null ?
+            // resetPassEmail != null ?
                 <div className="container-grey">
                     <div className="form-container">
                         <div className='h1Box'>
@@ -37,7 +37,7 @@ function OTP() {
                         </div>
                     </div>
                 </div>
-                : <h2 className='container-grey'>First go to your Forget Password</h2>
+                // : <h2 className='container-grey'>First go to your Forget Password</h2>
         }
     </>
 

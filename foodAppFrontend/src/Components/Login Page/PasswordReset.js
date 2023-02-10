@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 function PasswordReset() {
     const [password, passwordSet] = useState("");
     const [passwordCnf, passwordCnfSet] = useState("");
-    const { resetPassEmail, setResetEmail, otpPassEmail, setOtpPassEmail } = useAuth();
+    const { resetPassEmail, resetPassEmailSetter, otpPassEmail, setOtpPassEmailSetter } = useAuth();
     const history = useHistory();
 
     // email,otp 
@@ -26,28 +26,28 @@ function PasswordReset() {
             console.log(res);
             if (res.status == 201) {
                 alert("password changed successfully");
-                setOtpPassEmail(null);
-                setResetEmail(null);
+                setOtpPassEmailSetter(null);
+                resetPassEmailSetter(null);
                 history.push("/login");
             } else if (res.status == 200) {
                 alert(res.data.message);
-                setOtpPassEmail(null);
-                setResetEmail(null);
+                setOtpPassEmailSetter(null);
+                resetPassEmailSetter(null);
             }
         } catch (err) {
             console.log(err.message);
             if (err.message == "Request failed with status code 500") {
                 alert("Internal server error");
             }
-            setOtpPassEmail(null);
-            setResetEmail(null);
+            setOtpPassEmailSetter(null);
+            resetPassEmailSetter(null);
         }
     }
 
     return (
         <>
             {
-                resetPassEmail && otpPassEmail ?
+                // resetPassEmail && otpPassEmail ?
                     <div className="container-grey">
                         <div className="form-container">
                             <div className='h1Box'>
@@ -71,7 +71,7 @@ function PasswordReset() {
                             </div>
                         </div>
                     </div>
-                    : <h2 className='container-grey'>First go to your Forget Password</h2>
+                    // : <h2 className='container-grey'>First go to your Forget Password</h2>
 
             }
         </>

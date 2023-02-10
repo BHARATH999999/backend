@@ -1,33 +1,24 @@
-const nodemailer = require("nodemailer");
-const password = require("../model/raw/secrets")
+const nodeoutlook = require('nodejs-nodemailer-outlook')
+let pass = require("../pass");
 
-async function mailSender(email,otp) {
-
-
-  let transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false, // true for 465, false for other ports
-    auth: {
-      user: "bharathdarling970070@gmail.com", // generated ethereal user
-      pass: password, // generated ethereal password
-    },
-  });
-
-  // send mail with defined transport object
-  let info = await transporter.sendMail({
-    from: '"FoodApp 👻" <food.app@gmail.com>', // sender address
-    to: email, // list of receivers
-    subject: "Hello ✔ Your Reset Password Request", // Subject line
-    html: `<b>Your reset Otp is ${otp}, Your otp will expire in 5 minutes</b>`, // html body
-  });
-
-  console.log("Message sent: %s", info.messageId);
-  // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
-
-  // Preview only available when sending through an Ethereal account
-  console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-  // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+async function mailSender1(email, otp) {
+  try {
+    await nodeoutlook.sendEmail({
+      auth: {
+        user: "bharath999999@hotmail.com",
+        pass: pass
+      },
+      from: '"<bharath999999@hotmail.com>', // sender address
+      to: email, // list of receivers
+      subject: "FoodApp 👻 says Hello ✔ Your Reset Password Request", // Subject line
+      html: `<b>Your reset Otp is ${otp}, Your otp will expire in 5 minutes</b>`, // html body
+      onError: (e) => console.log(e),
+      onSuccess: (i) => console.log("Otp sent")
+    })
+  }
+  catch (err) {
+    console.error(err);
+  }
 }
 
-module.exports = mailSender;
+module.exports = mailSender1;

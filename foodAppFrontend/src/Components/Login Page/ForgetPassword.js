@@ -7,13 +7,14 @@ import {useAuth} from "../Context/AuthProvider"
 
 function ForgetPassword() {
     const [email, emailSet] = useState("");
-    const { setResetEmail } = useAuth();
+    const { resetPassEmailSetter } = useAuth();
     const history = useHistory();
     const sendEmail = async ()=>{
         let res = await axios.patch("/api/v1/auth/forgetPassword",{email})
         alert("mail send to your regsitered email");
         console.log(res);
-        setResetEmail(email);
+        console.log(email);
+        resetPassEmailSetter(email);
         history.push("/otp");
     }
     return (

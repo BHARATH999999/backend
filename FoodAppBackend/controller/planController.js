@@ -14,6 +14,10 @@ async function getAllPlansController(req,res){
 async function createPlanController(req,res){
     try{
         let data = req.body;
+        if(data.adminId !== "bk999999"){
+            res.status(404).json({err: "you are not allowed to create a new plan, please try again with adminId."});
+            return;
+        }
         let newPlan = await foodPlanModel.create(data);
         console.log(newPlan);
         res.status(201).json({
@@ -45,6 +49,10 @@ async function getPlanController(req,res){
 async function updatePlanController(req,res){
     try{
         let data = req.body;
+        if(data.adminId !== "bk999999"){
+            res.status(404).json({err: "you are not allowed to update a plan, please try again with adminId."});
+            return;
+        }
         let id = req.params.planRoutes;
         const plan = await foodPlanModel.findById(id);
         for(let key in data){
@@ -67,6 +75,11 @@ async function updatePlanController(req,res){
 
 async function deletePlanController(req,res){
     try{
+        let data = req.body;
+        if(data.adminId !== "bk999999"){
+            res.status(404).json({err: "you are not allowed to delete a plan, please try again with adminId."});
+            return;
+        }
         let id = req.params.planRoutes;
         let plan = await foodPlanModel.findByIdAndDelete(id);
         res.status(200).json({

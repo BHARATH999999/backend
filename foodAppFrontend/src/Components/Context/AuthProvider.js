@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-// import { useHistory } from 'react-router';
+import { useHistory } from 'react-router';
 export const AuthContext = React.createContext();
 //custom hook that allows components to access context data
 export function useAuth() {
@@ -35,12 +35,12 @@ function AuthProvider({ children }) {
         let flag = true;
         try {
             setLoading(true);
-            let user1 = localStorage.getItem("user");
+            let user1 = JSON.parse(localStorage.getItem("user"));
             if (user1) {
                 userSet(user1)
                 setLoading(false);
-                console.log("40", res.data.user);
-                return flag;
+                console.log("40", user1);
+                return;
             }
             const res = await axios.post("/api/v1/auth/login", {
                 email: email,
@@ -53,8 +53,7 @@ function AuthProvider({ children }) {
             return flag;
         }
         catch (err) {
-            console.log(err);
-            alert(err.message);
+            console.log(err.message);
             setLoading(false);
         }
         console.log("login will be here");
@@ -65,16 +64,22 @@ function AuthProvider({ children }) {
         console.log("logout will come here");
     }
 
+    function resetPassEmailSetter(email) {
+        setResetEmail(email);
+        // console.log(resetPassEmail);
+    }
+
+    function setOtpPassEmailSetter(email){
+        setOtpPassEmail(email);
+    }
     const value = {
         user,
         userSet,
         login,
         signUp,
         logout,
-        resetPassEmail,
-        setResetEmail,
-        otpPassEmail,
-        setOtpPassEmail
+        resetPassEmailSetter,
+        setOtpPassEmailSetter
     }
     return (
         < AuthContext.Provider value={value} >

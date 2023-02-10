@@ -11,9 +11,9 @@ function Login() {
     const [password, passwordSet] = useState("")
     const [email, emailSet] = useState("");
     // const [loading, setLoading] = useState(false);
-    const {userSet} = useContext(AuthContext);
-    let user1 = localStorage.getItem("user");
-    if(user1) userSet(user1);
+    // const {userSet} = useContext(AuthContext);
+    // let user1 = localStorage.getItem("user");
+    // if(user1) userSet(user1);
     const {login, user} = useContext(AuthContext);
 
 
@@ -21,7 +21,7 @@ function Login() {
     const handleLogin = async () => {
         try {
             // console.log(email,password)
-            let flag = await login(email, password)
+            let flag = await login({email, password})
             if(flag){
                 history.push("/")
             }

@@ -21,7 +21,7 @@ async function signupController(req,res){
 
 async function loginController(req,res){
     try{
-        let data = req.body;
+        let data = req.body.email; //some sort of error turns into usage😊
         // console.log(data);
         let {email,password} = data;
         if(email && password){
