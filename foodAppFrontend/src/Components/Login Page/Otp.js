@@ -15,7 +15,7 @@ function OTP() {
     }
     return (<>
         {
-            // resetPassEmail != null ?
+            resetPassEmail != null ?
                 <div className="container-grey">
                     <div className="form-container">
                         <div className='h1Box'>
@@ -37,7 +37,7 @@ function OTP() {
                         </div>
                     </div>
                 </div>
-                // : <h2 className='container-grey'>First go to your Forget Password</h2>
+                : <h2 className='container-grey'>First go to your Forget Password</h2>
         }
     </>
 

@@ -47,7 +47,7 @@ function PasswordReset() {
     return (
         <>
             {
-                // resetPassEmail && otpPassEmail ?
+                resetPassEmail && otpPassEmail ?
                     <div className="container-grey">
                         <div className="form-container">
                             <div className='h1Box'>
@@ -71,7 +71,7 @@ function PasswordReset() {
                             </div>
                         </div>
                     </div>
-                    // : <h2 className='container-grey'>First go to your Forget Password</h2>
+                    : <h2 className='container-grey'>First go to your Forget Password</h2>
 
             }
         </>
