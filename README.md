@@ -36,6 +36,9 @@
         <a target="_blank" href ="https://nodemailer.com/" rel="noreferrer">
                 <img src="https://nodemailer.com/nm_logo_200x136.png" alt="nodemailer" width="45" height="45"/> 
         </a>
+        <a target="_blank" href ="https://nodemon.io/" rel="noreferrer">
+                <img src="https://user-images.githubusercontent.com/13700/35731649-652807e8-080e-11e8-88fd-1b2f6d553b2d.png" alt="nodemon" width="45" height="45"/>
+        </a>
  </p>
  <p align="left">        
         <h2 align="left">Languages: </h2>
