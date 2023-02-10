@@ -79,7 +79,9 @@ function AuthProvider({ children }) {
         signUp,
         logout,
         resetPassEmailSetter,
-        setOtpPassEmailSetter
+        setOtpPassEmailSetter,
+        resetPassEmail,
+        otpPassEmail
     }
     return (
         < AuthContext.Provider value={value} >

@@ -26,9 +26,9 @@ function PlanDetail() {
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
-    console.log(rate);
+    // console.log(rate);
     const handleClick = async () => {
-        // console.log(123645);
+        console.log(123645);
         const data = await axios.post("/api/v1/review", {
             "review": review,
             "rating": rate,

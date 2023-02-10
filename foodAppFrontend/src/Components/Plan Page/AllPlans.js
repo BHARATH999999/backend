@@ -22,13 +22,13 @@ function AllPlans() {
                 <div className="line"></div>
             </div>
             <div className='allplanDetails'>
-                <div className='planDetails'>
+                <div className='planDetails' style={{display : "flex", flexWrap: "wrap",justifyContent : "space-evenly", flexDirection : "row", overflow: "auto"}}>
                     {arr && arr?.map((ele, key) =>
-                        <div className='apCard' key={key}>
+                        <div className='apCard' key={key} style = {{margin : "10px"}}>
                             <h3 className='h3'>{ele.name}</h3>
                             <div className='pCard1'>
                                 <div className='priceBox'>
-                                    <div className='price'>Rs {ele.price}</div>
+                                    <div className='price'>Rs.{ele.price}</div>
                                     <div className="duration">/year</div>
                                 </div>
                                 <p className="point">That’s only {Math.floor(ele.price/ele.duration)} per month</p>
@@ -49,7 +49,7 @@ function AllPlans() {
                                 </div>
                             </div>
 
-                            <button className='btn'> <Link to={`/planDetail/${ele._id}`} >I'm Hungry</Link></button>
+                            <button className='btn' style={{marginTop : "20px"}}> <Link to={`/planDetail/${ele._id}`} >I'm Hungry</Link></button>
                         </div>
                     )}
 
