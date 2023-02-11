@@ -34,7 +34,8 @@ let planSchema = new mongoose.Schema({
         default:0
     },
     averageRating:{
-        type:Number
+        type:Number,
+        default:0
     }
 })
 

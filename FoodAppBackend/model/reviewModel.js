@@ -3,11 +3,11 @@ const mongoose = require("mongoose")
 let reviewSchema = new mongoose.Schema({
     description:{
         type:String,
-        // required:[true,"Review can't be empty"],
+        required:[true,"Review can't be empty"],
     },
     rating:{
         type:Number,
-        // required:[true,"Review must contain some rating"],
+        required:[true,"Review must contain some rating"],
         min:1,
         max:5
     },
