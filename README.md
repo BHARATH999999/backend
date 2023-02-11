@@ -33,8 +33,8 @@
         <a target="_blank" href ="https://axios-http.com/" rel="noreferrer">
                 <img src="https://avatars.githubusercontent.com/u/32372333?s=200&v=4" alt="Axios" width="45" height="45"/> 
         </a>
-        <a target="_blank" href ="https://nodemailer.com/" rel="noreferrer">
-                <img src="https://nodemailer.com/nm_logo_200x136.png" alt="nodemailer" width="45" height="45"/> 
+        <a target="_blank" href ="https://www.npmjs.com/package/nodejs-nodemailer-outlook" rel="noreferrer">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Microsoft_Office_Outlook_%282018%E2%80%93present%29.svg/180px-Microsoft_Office_Outlook_%282018%E2%80%93present%29.svg.png" alt="nodejs-nodemailer-outlook" width="45" height="45"/> 
         </a>
         <a target="_blank" href ="https://nodemon.io/" rel="noreferrer">
                 <img src="https://user-images.githubusercontent.com/13700/35731649-652807e8-080e-11e8-88fd-1b2f6d553b2d.png" alt="nodemon" width="45" height="45"/>
