@@ -4,6 +4,7 @@ import { useParams } from 'react-router';
 import '../Styles/planDetail.css'
 import '../Styles/contact.css'
 import AuthProvider, { useAuth } from '../Context/AuthProvider';
+// import mongoose from 'mongoose';
 
 function PlanDetail() {
     const [plan, setplan] = useState({})
@@ -30,7 +31,7 @@ function PlanDetail() {
     const handleClick = async () => {
         console.log(123645);
         const data = await axios.post("/api/v1/review", {
-            "review": review,
+            "description": review,
             "rating": rate,
             "user": user._id,
             "plan": id

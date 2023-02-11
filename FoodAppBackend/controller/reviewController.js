@@ -13,12 +13,15 @@ const foodPlanModel = require("../model/planModel");
  async function createReviewController(req,res){
     try{
         let reviewData = req.body;
-        let review = await foodReviewModel.create(reviewData, {new : true});
+        let review = await foodReviewModel.create(reviewData);
         let rating = review.rating;
         let reviewId = review["_id"];
-        let currentPlan = await foodPlanModel.findById(review.plan);
-        let totalNumRating = currentPlan.reviews.length;
-        let prevAvg = currentPlan.averageRating;
+        let currentPlan = await foodPlanModel.findById(reviewData.plan);
+        // console.log(currentPlan);
+        let totalNumRating = currentPlan?.reviews.length;
+        let prevAvg = currentPlan?.averageRating;
+        let sumOfAllRatings = currentPlan?.totalRating;
+        currentPlan.totalRating = sumOfAllRatings + rating;
         if(prevAvg){
             let totalSumRating = prevAvg*totalNumRating;
             let newAvg = (totalSumRating + rating)/(totalNumRating+1);
@@ -28,11 +31,11 @@ const foodPlanModel = require("../model/planModel");
         }
         currentPlan.reviews.push(reviewId);
         await currentPlan.save();
+        console.log(review);
         res.status(201).json({
             review,
             result:"created"
         })
-        console.log(review);
     }
     catch(err){
         console.log(err);

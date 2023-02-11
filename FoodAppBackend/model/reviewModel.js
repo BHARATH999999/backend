@@ -3,11 +3,11 @@ const mongoose = require("mongoose")
 let reviewSchema = new mongoose.Schema({
     description:{
         type:String,
-        required:[true,"Review can't be empty"],
+        // required:[true,"Review can't be empty"],
     },
     rating:{
         type:Number,
-        required:[true,"Review must contain some rating"],
+        // required:[true,"Review must contain some rating"],
         min:1,
         max:5
     },
@@ -16,12 +16,12 @@ let reviewSchema = new mongoose.Schema({
         default:Date.now
     },
     user:{
-        type:mongoose.Schema.ObjectId,
+        type:mongoose.Schema.Types.ObjectId,
         required:[true,"Review must belong to a user"],
         ref:"FoodUserModel"
     },
     plan:{
-        type:mongoose.Schema.ObjectId,
+        type:mongoose.Schema.Types.ObjectId,
         required:[true,"Review must belong to a plan"],
         ref:"foodPlanModel"
     }
