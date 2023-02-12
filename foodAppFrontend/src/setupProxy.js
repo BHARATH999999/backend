@@ -5,7 +5,7 @@ module.exports = function (app) {
     app.use("/api",
         createProxyMiddleware({
             // server ke home page ka link
-            target: "http://localhost:3000",
+            target: "http://44.202.201.103",
             // target: 'https://food-app-i86p.onrender.com',
             changeOrigin: true,
         })
