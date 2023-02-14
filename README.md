@@ -30,6 +30,9 @@
         <a align = "center" target="_blank" href ="https://jwt.io/" rel="noreferrer">
                 <img src="https://jwt.io/img/pic_logo.svg" alt="JWT" width="45" height="45"/> 
         </a>
+        <a target="_blank" href ="https://www.npmjs.com/package/cors" rel="noreferrer">
+                <img src="https://cdn.pellerex.com/public/ecosystem/web/content/api-cors/pellerex-asp-net-5-web-api-cors.png" alt="CORS" width="111" height="45"/> 
+        </a>
         <a target="_blank" href ="https://axios-http.com/" rel="noreferrer">
                 <img src="https://avatars.githubusercontent.com/u/32372333?s=200&v=4" alt="Axios" width="45" height="45"/> 
         </a>
